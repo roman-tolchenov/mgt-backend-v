@@ -26,3 +26,23 @@ pub fn qn(q f64) Qn {
 fn (q Qn) f64() f64 {
     return q.qnotes.f64()
 }
+
+pub fn (q Qn) str() string {
+    return 'Qn(${q.qnotes})'
+}
+
+pub fn (q1 Qn) + (q2 Qn) Qn {
+    return Qn{qnotes: q1.qnotes + q2.qnotes}
+}
+
+pub fn (q1 Qn) - (q2 Qn) Qn {
+    return Qn{qnotes: q1.qnotes - q2.qnotes}
+}
+
+pub fn (q1 Qn) * (q2 Qn) Qn {
+    return Qn{qnotes: q1.qnotes * q2.qnotes}
+}
+
+pub fn (q1 Qn) / (q2 Qn) Qn {
+    return Qn{qnotes: q1.qnotes / q2.qnotes}
+}
