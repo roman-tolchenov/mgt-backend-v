@@ -1,0 +1,28 @@
+module mgt
+import math.fractions {Fraction, fraction, approximate}
+
+pub const a = 3
+
+pub struct Qn {
+pub:
+    qnotes Fraction
+}
+
+struct QnArgs {
+    n i64 [required]
+    d i64 = 1
+}
+
+// Make Qn from fraction elements: numerator and denominator
+pub fn qnf(q QnArgs) Qn {
+    return Qn{qnotes: fraction(q.n, q.d)}
+}
+
+// Make Qn from a float
+pub fn qn(q f64) Qn {
+    return Qn{qnotes: approximate(q)}
+}
+
+fn (q Qn) f64() f64 {
+    return q.qnotes.f64()
+}
