@@ -1,6 +1,20 @@
 module main
-import mgt
+
+struct Seconds {
+pub:
+    value f64
+}
+
+fn (t Seconds) str() string {
+    return '${t.value} sec'
+}
+
+fn (t Seconds) f64() f64 {
+    return t.value
+}
 
 fn main() {
-    println('Hello World! ${mgt.a}')
+    t := Seconds{12}
+    s := t.f64()
+    println('Hello World! ${t}, $s')
 }

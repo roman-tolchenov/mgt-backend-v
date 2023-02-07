@@ -1,8 +1,6 @@
 module mgt
 import math.fractions {Fraction, fraction, approximate}
 
-pub const a = 3
-
 pub struct Qn {
 pub:
     qnotes Fraction
