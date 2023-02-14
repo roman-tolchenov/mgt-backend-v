@@ -35,6 +35,45 @@ fn test_copying() {
     assert b.x == 12
 }
 
+fn test_copying_1() {
+    a := AAA{x: 12}
+    mut b := a
+    assert a == b
+    b.x = 42
+    assert a != b
+    assert b.x == 42
+    assert a.x == 12
+}
+
+struct MutableStruct {
+mut:
+    list []string
+}
+
+fn test_copying_2() {
+    a := MutableStruct{["aaa"]} // immutable variable
+    assert a.list[0] == "aaa"
+    mut b := a
+    b.list[0] = "BBB"
+    assert a.list[0] == "BBB"
+    assert b.list[0] == "BBB"
+}
+
+struct ImmutableStruct {
+    list []string
+}
+
+fn test_copying_3() {
+    a := ImmutableStruct{["aaa"]} // immutable variable
+    assert a.list[0] == "aaa"
+    mut b := a
+    // b.list[0] = "BBB" // compile error
+    b = ImmutableStruct{["BBB"]}
+    assert a.list[0] == "aaa"
+    assert b.list[0] == "BBB"
+}
+
+
 fn test_dot() {
     h := Hit{duration: qn(1)}
     h1 := h.dot()
