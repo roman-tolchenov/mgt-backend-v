@@ -19,9 +19,9 @@ pub fn (h Hit) str() string {
 pub fn (h Hit) dot() Hit {
     udur := if h.ndots == 0 {h.duration} else {h.undotted_duration}
     ndots := h.ndots + 1
-    dur := udur.qnotes * (approximate(2.0) - fraction(1, powi(2, ndots)))
+    dur := udur.qn * (approximate(2.0) - fraction(1, powi(2, ndots)))
     return Hit{
-        duration: Qn{qnotes: dur.reduce()},
+        duration: Qn{qn: dur.reduce()},
         velocity: h.velocity,
         start_offset: h.start_offset,
         duration_offset: h.duration_offset,
@@ -37,9 +37,9 @@ pub fn (h Hit) tuplet(number_of u32, in_space_of u32) Hit {
     if h.ndots != 0 {
         panic('Cannot make tuplet from a dotted Hit')
     }
-    dur := h.duration.qnotes * fraction(in_space_of, number_of)
+    dur := h.duration.qn * fraction(in_space_of, number_of)
     return Hit{
-        duration: Qn{qnotes: dur.reduce()},
+        duration: Qn{qn: dur.reduce()},
         velocity: h.velocity,
         start_offset: h.start_offset,
         duration_offset: h.duration_offset,

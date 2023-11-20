@@ -40,18 +40,18 @@ fn test_convert_to_float() {
 fn test_add_fractions() {
     q1 := qnf(n: 1, d: 2)
     q2 := qnf(n: 1, d: 2)
-    q := q1.qnotes + q2.qnotes
+    q := q1.qn + q2.qn
     assert q.f64() == 1.0
 }
 
 fn test_qn() {
     q1 := qn(0.5)
     assert q1.f64() == 0.5
-    assert q1.qnotes.n == 1
-    assert q1.qnotes.d == 2
+    assert q1.qn.n == 1
+    assert q1.qn.d == 2
     q2 := qn(1.0/3.0)
-    assert q2.qnotes.n == 1
-    assert q2.qnotes.d == 3
+    assert q2.qn.n == 1
+    assert q2.qn.d == 3
 }
 
 fn test_str() {

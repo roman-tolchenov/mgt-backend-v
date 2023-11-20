@@ -3,44 +3,44 @@ import math.fractions {Fraction, fraction, approximate}
 
 pub struct Qn {
 pub:
-    qnotes Fraction
+    qn Fraction
 }
 
 struct QnArgs {
-    n i64 [required]
+    n i64 @[required]
     d i64 = 1
 }
 
 // Make Qn from fraction elements: numerator and denominator
 pub fn qnf(q QnArgs) Qn {
-    return Qn{qnotes: fraction(q.n, q.d)}
+    return Qn{qn: fraction(q.n, q.d)}
 }
 
 // Make Qn from a float
 pub fn qn(q f64) Qn {
-    return Qn{qnotes: approximate(q)}
+    return Qn{qn: approximate(q)}
 }
 
 fn (q Qn) f64() f64 {
-    return q.qnotes.f64()
+    return q.qn.f64()
 }
 
 pub fn (q Qn) str() string {
-    return 'Qn(${q.qnotes})'
+    return 'Qn(${q.qn})'
 }
 
 pub fn (q1 Qn) + (q2 Qn) Qn {
-    return Qn{qnotes: q1.qnotes + q2.qnotes}
+    return Qn{qn: q1.qn + q2.qn}
 }
 
 pub fn (q1 Qn) - (q2 Qn) Qn {
-    return Qn{qnotes: q1.qnotes - q2.qnotes}
+    return Qn{qn: q1.qn - q2.qn}
 }
 
 pub fn (q1 Qn) * (q2 Qn) Qn {
-    return Qn{qnotes: q1.qnotes * q2.qnotes}
+    return Qn{qn: q1.qn * q2.qn}
 }
 
 pub fn (q1 Qn) / (q2 Qn) Qn {
-    return Qn{qnotes: q1.qnotes / q2.qnotes}
+    return Qn{qn: q1.qn / q2.qn}
 }
